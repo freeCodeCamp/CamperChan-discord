@@ -18,7 +18,7 @@ describe("community command", () => {
       community.data.description,
       "Commands related to our community.",
     );
-    assert.lengthOf(subcommands, 7);
+    assert.lengthOf(subcommands, 5);
   });
 
   it("has correct code of conduct", () => {
@@ -62,16 +62,6 @@ describe("community command", () => {
     assert.lengthOf(forum?.options || "hi", 0);
   });
 
-  it("has correct leaderboard", () => {
-    const leaderboard = subcommands.find((sub) => {
-      return sub.name === "leaderboard";
-    });
-    assert.exists(leaderboard);
-    assert.equal(leaderboard?.name, "leaderboard");
-    assert.equal(leaderboard?.description, "View the server leaderboard.");
-    assert.lengthOf(leaderboard?.options || "hi", 0);
-  });
-
   it("has correct quote", () => {
     const quote = subcommands.find((sub) => {
       return sub.name === "quote";
@@ -80,15 +70,6 @@ describe("community command", () => {
     assert.equal(quote?.name, "quote");
     assert.equal(quote?.description, "Returns a motivational quote.");
     assert.lengthOf(quote?.options || "hi", 0);
-  });
-
-  it("has correct profile", () => {
-    const rank = subcommands.find((sub) => {
-      return sub.name === "profile";
-    });
-    assert.equal(rank?.name, "profile");
-    assert.equal(rank?.description, "See your community profile.");
-    assert.lengthOf(rank?.options || "hi", 0);
   });
 
   it("has correct truism", () => {

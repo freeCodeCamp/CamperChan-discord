@@ -1,6 +1,4 @@
 import { type Message, EmbedBuilder, type PartialMessage } from "discord.js";
-import { checkHacktoberfestMessage }
-  from "../../modules/checkHacktoberfestMessage.js";
 import { customSubstring } from "../../utils/customSubstring.js";
 import { errorHandler } from "../../utils/errorHandler.js";
 import { generateDiff } from "../../utils/generateDiff.js";
@@ -18,21 +16,9 @@ export const handleMessageEdit = async(
   updatedMessage: Message | PartialMessage,
 ): Promise<void> => {
   try {
-    const { author, content: updatedContent, channel, url, partial }
+    const { author, content: updatedContent, channel, url }
      = updatedMessage;
     const { content: oldContent } = oldMessage;
-
-    if (channel.id === "1288261106921504913") {
-      const message = partial
-        ? await updatedMessage.fetch()
-        : updatedMessage;
-      // This should never be possible, but TS doesn't know that.
-      if (!message.inGuild()) {
-        return;
-      }
-      await checkHacktoberfestMessage(camperChan, message);
-      return;
-    }
 
     if (author === null || author.bot) {
       return;

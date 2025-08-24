@@ -12,11 +12,6 @@ import { hasKnownPhishingLink }
   from "../../modules/automod/hasKnownPhishingLink.js";
 import { hasNonApprovedInvite }
   from "../../modules/automod/hasNonApprovedInvite.js";
-import { checkHacktoberfestMessage }
-  from "../../modules/checkHacktoberfestMessage.js";
-import { githubListener } from "../../modules/githubListener.js";
-import { levelListener } from "../../modules/levelListener.js";
-import { loadRoles } from "../../modules/loadRoles.js";
 import { messageCounter } from "../../modules/messageCounter.js";
 import { sendModerationDm } from "../../modules/sendModerationDm.js";
 import { updateHistory } from "../../modules/updateHistory.js";
@@ -44,11 +39,6 @@ export const handleMessageCreate = async(
       }
       await message.reply(`Cache cleared for ${String(id)}`);
     }
-    if (message.content === "~roles") {
-      await message.reply("Loading language roles.");
-      await loadRoles(camperChan);
-      await message.reply("Done~!");
-    }
     if (message.content === "~contributors") {
       await message.reply("Fetching records.");
       const allRecords = await camperChan.db.messages.findMany({});
@@ -75,11 +65,6 @@ export const handleMessageCreate = async(
     }
   }
 
-  if (message.channel.id === "1288261106921504913") {
-    await checkHacktoberfestMessage(camperChan, message);
-    return;
-  }
-
   if (
     message.member !== null
     // Safe to make optional here, as member should only be null for a DM.
@@ -92,7 +77,7 @@ export const handleMessageCreate = async(
         && !file.contentType.startsWith("video/")
       );
     })
-    && message.channel.parentId !== "1381662314540957787" // Resume review channel, so people can upload PDFs.
+    && message.channel.parentId !== "1381662314540957787"
   ) {
     await message.delete();
     await message.channel.send({
@@ -157,8 +142,6 @@ export const handleMessageCreate = async(
   }
 
   await messageCounter(camperChan, message);
-  await levelListener(camperChan, message);
-  await githubListener(camperChan, message);
 
   if (
     message.channel.type !== ChannelType.GuildText

@@ -6,9 +6,6 @@ import { handleCodeOfConduct }
   from "./subcommands/community/handleCodeOfConduct.js";
 import { handleContribute } from "./subcommands/community/handleContribute.js";
 import { handleForum } from "./subcommands/community/handleForum.js";
-import { handleLeaderboard }
-  from "./subcommands/community/handleLeaderboard.js";
-import { handleProfile } from "./subcommands/community/handleProfile.js";
 import { handleQuote } from "./subcommands/community/handleQuote.js";
 import { handleTruism } from "./subcommands/community/handleTruism.js";
 import type { Command } from "../interfaces/command.js";
@@ -19,8 +16,6 @@ const handlers: Record<string, Subcommand> = {
   "code-of-conduct": handleCodeOfConduct,
   "contribute":      handleContribute,
   "forum":           handleForum,
-  "leaderboard":     handleLeaderboard,
-  "profile":         handleProfile,
   "quote":           handleQuote,
   "truism":          handleTruism,
 };
@@ -51,18 +46,8 @@ export const community: Command = {
     ).
     addSubcommand(
       new SlashCommandSubcommandBuilder().
-        setName("leaderboard").
-        setDescription("View the server leaderboard."),
-    ).
-    addSubcommand(
-      new SlashCommandSubcommandBuilder().
         setName("quote").
         setDescription("Returns a motivational quote."),
-    ).
-    addSubcommand(
-      new SlashCommandSubcommandBuilder().
-        setName("profile").
-        setDescription("See your community profile."),
     ).
     addSubcommand(
       new SlashCommandSubcommandBuilder().

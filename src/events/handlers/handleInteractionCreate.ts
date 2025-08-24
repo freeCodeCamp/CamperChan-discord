@@ -1,6 +1,4 @@
 import { EmbedBuilder, type Interaction } from "discord.js";
-import { compareTwoStrings } from "string-similarity";
-import { languages } from "../../config/languages.js";
 import { closePrivateChannel } from "../../modules/closePrivateChannel.js";
 import { reactionRoleClick } from "../../modules/reactionRoleClick.js";
 import { closeTicket } from "../../modules/tickets/closeTicket.js";
@@ -138,20 +136,5 @@ export const handleInteractionCreate = async(
       content:   "Thank you for reporting!",
       ephemeral: true,
     });
-  }
-
-  if (
-    interaction.isAutocomplete()
-    && interaction.commandName === "translator"
-  ) {
-    const input = interaction.options.getString("language", true);
-    const similar = languages.sort((a, b) => {
-      return compareTwoStrings(b, input) - compareTwoStrings(a, input);
-    });
-    await interaction.respond(
-      similar.slice(0, 5).map((element) => {
-        return { name: element, value: element };
-      }),
-    );
   }
 };
