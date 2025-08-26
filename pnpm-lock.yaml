@@ -36,8 +36,8 @@ importers:
         specifier: 11.11.1
         version: 11.11.1
       mongodb:
-        specifier: 6.17.0
-        version: 6.17.0(socks@2.8.1)
+        specifier: 6.18.0
+        version: 6.18.0(socks@2.8.1)
       node-html-to-image:
         specifier: 4.0.0
         version: 4.0.0
@@ -2470,8 +2470,8 @@ packages:
   mongodb-connection-string-url@3.0.0:
     resolution: {integrity: sha512-t1Vf+m1I5hC2M5RJx/7AtxgABy1cZmIPQRMXw+gEIPn/cZNF3Oiy+l0UIypUwVB5trcWHq3crg2g3uAR9aAwsQ==}
 
-  mongodb@6.17.0:
-    resolution: {integrity: sha512-neerUzg/8U26cgruLysKEjJvoNSXhyID3RvzvdcpsIi2COYM3FS3o9nlH7fxFtefTb942dX3W9i37oPfCVj4wA==}
+  mongodb@6.18.0:
+    resolution: {integrity: sha512-fO5ttN9VC8P0F5fqtQmclAkgXZxbIkYRTUi1j8JO6IYwvamkhtYDilJr35jOPELR49zqCJgXZWwCtW7B+TM8vQ==}
     engines: {node: '>=16.20.1'}
     peerDependencies:
       '@aws-sdk/credential-providers': ^3.188.0
@@ -6100,7 +6100,7 @@ snapshots:
       '@types/whatwg-url': 11.0.4
       whatwg-url: 13.0.0
 
-  mongodb@6.17.0(socks@2.8.1):
+  mongodb@6.18.0(socks@2.8.1):
     dependencies:
       '@mongodb-js/saslprep': 1.1.9
       bson: 6.10.4
