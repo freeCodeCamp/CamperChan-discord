@@ -19,7 +19,7 @@ export const tags: Array<Tag> = [
   },
   {
     message:
-      "Don't ask to ask, just ask\n<https://dontasktoask.com>. For details on how to ask a strong question, visit https://canary.discord.com/channels/692816967895220344/1033845883822948502",
+      "Don't ask to ask, just ask\n<https://dontasktoask.com>. For details on how to ask a strong question, visit <#1410670814696833084>",
     name: "How to ask a question",
   },
   {
