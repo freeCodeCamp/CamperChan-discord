@@ -60,8 +60,8 @@ importers:
         specifier: 7.1.2
         version: 7.1.2
       winston:
-        specifier: 3.18.1
-        version: 3.18.1
+        specifier: 3.18.2
+        version: 3.18.2
     devDependencies:
       '@nhcarrigan/eslint-config':
         specifier: 5.2.0
@@ -283,8 +283,8 @@ packages:
   '@dabh/diagnostics@2.0.3':
     resolution: {integrity: sha512-hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA==}
 
-  '@dabh/diagnostics@2.0.6':
-    resolution: {integrity: sha512-fuB2/plPknb9zp6TyJpnvEXYJddd4xEGoOMraVdK2bq99xpECHuTpqKJ+N40DGHLx1i4jiFzmX9Ti7hh6KLIbw==}
+  '@dabh/diagnostics@2.0.7':
+    resolution: {integrity: sha512-EnXa4T9/wuLw8iaEUFwIJMo0xNxyE3mzxLL14ixfVToJNQHG2Jwo8xMmafVJwAiAmIyHXsFDZpZR/TJC31857g==}
 
   '@discordjs/builders@1.11.2':
     resolution: {integrity: sha512-F1WTABdd8/R9D1icJzajC4IuLyyS8f3rTOz66JsSI3pKvpCAtsMBweu8cyNYsIyvcrKAVn9EPK+Psoymq+XC0A==}
@@ -1022,8 +1022,8 @@ packages:
     resolution: {integrity: sha512-jjmJywLAFoWeBi1W7994zZyiNWPIiqRRNAmSERxyg93xRGzNYvGjlZ0gR6x0F4gPRi2+0O6S71kOZYyr3cxaIQ==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
-  '@so-ric/colorspace@1.1.5':
-    resolution: {integrity: sha512-m2yI81kZ+2J2psTYtmBs3lfl/LM4WgLMCzkweMfQdbbyndcyOmFa6pblHjvjfblphPaGDzTDK+lmC/dUMSnv0A==}
+  '@so-ric/colorspace@1.1.6':
+    resolution: {integrity: sha512-/KiKkpHNOBgkFJwu9sh48LkHSMYGyuTcSFK/qMBdnOAlrRJzRSXAOFB5qwzaVQuDl8wAvHVMkaASQDReTahxuw==}
 
   '@standard-schema/spec@1.0.0':
     resolution: {integrity: sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA==}
@@ -3568,8 +3568,8 @@ packages:
     resolution: {integrity: sha512-nT6SIDaE9B7ZRO0u3UvdrimG0HkB7dSTAgInQnNR2SOPJ4bvq5q79+pXLftKmP52lJGW15+H5MCK0nM9D3KB/g==}
     engines: {node: '>= 12.0.0'}
 
-  winston@3.18.1:
-    resolution: {integrity: sha512-EaQ6y7b9h6q7UJQn4/xlOsiu0I8844FfMdbN6V2I2i4528qeEWqRUcHzhvkseckAb1QxMhwX5V2YYiABkOfGfg==}
+  winston@3.18.2:
+    resolution: {integrity: sha512-+yDkrWD2rWkv6XjSgK2QyujZDNsHE9YLa8S284TpVrYdaloMkZ7NvHzfnETYlSPOX9h5j5VJ+Ro9J872O8CC/g==}
     engines: {node: '>= 12.0.0'}
 
   wordwrap@1.0.0:
@@ -3875,9 +3875,9 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
-  '@dabh/diagnostics@2.0.6':
+  '@dabh/diagnostics@2.0.7':
     dependencies:
-      '@so-ric/colorspace': 1.1.5
+      '@so-ric/colorspace': 1.1.6
       enabled: 2.0.0
       fix-esm: 1.0.1
       kuler: 2.0.0
@@ -4538,7 +4538,7 @@ snapshots:
 
   '@sapphire/snowflake@3.5.3': {}
 
-  '@so-ric/colorspace@1.1.5':
+  '@so-ric/colorspace@1.1.6':
     dependencies:
       color: 5.0.2
       text-hex: 1.0.0
@@ -7540,10 +7540,10 @@ snapshots:
       triple-beam: 1.3.0
       winston-transport: 4.7.0
 
-  winston@3.18.1:
+  winston@3.18.2:
     dependencies:
       '@colors/colors': 1.6.0
-      '@dabh/diagnostics': 2.0.6
+      '@dabh/diagnostics': 2.0.7
       async: 3.2.4
       is-stream: 2.0.1
       logform: 2.7.0
