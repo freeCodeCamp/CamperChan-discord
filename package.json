@@ -24,7 +24,7 @@
   "dependencies": {
     "@prisma/client": "6.18.0",
     "@tryghost/admin-api": "1.14.0",
-    "deepl-node": "1.20.0",
+    "deepl-node": "1.21.0",
     "diff": "7.0.0",
     "discord.js": "14.19.3",
     "dotenv": "16.6.1",
