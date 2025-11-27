@@ -35,7 +35,7 @@
     "node-html-to-image": "4.0.0",
     "node-schedule": "2.1.1",
     "octokit": "4.1.4",
-    "prettier": "3.6.2",
+    "prettier": "3.7.1",
     "rss-parser": "3.13.0",
     "string-similarity": "4.0.4",
     "strip-ansi": "7.1.2",
