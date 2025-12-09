@@ -92,7 +92,7 @@ export const instantiateServer = async(
         await camperChan.octokit.rest.pulls.createReview({
           body:
             action === "labeled"
-              // eslint-disable-next-line stylistic/max-len -- It's a string.
+            // eslint-disable-next-line stylistic/max-len -- It's a string.
               ? "This PR has been marked as DO NOT MERGE. When you are ready to merge it, remove the label and I'll unblock the PR."
               // eslint-disable-next-line stylistic/max-len -- It's a string.
               : "This PR has been unmarked as DO NOT MERGE. You may now merge this PR.",
@@ -144,11 +144,11 @@ export const instantiateServer = async(
         await response.status(500).send("No secret provided.");
         return;
       }
-      const secretHeader = request.headers["x-appeal-secret"];
+      const secretHeader = request.headers.Authorization;
       if (typeof secretHeader !== "string") {
         await response.
           status(400).
-          send(`Invalid value ${String(secretHeader)} for X-Appeal-Secret`);
+          send(`Invalid value ${String(secretHeader)} for Authorization`);
         return;
       }
       if (secretHeader !== appealSecret) {
@@ -156,133 +156,143 @@ export const instantiateServer = async(
         return;
       }
       // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- I'll make a type guard at some point.
-      const { body } = request as { body: Appeal };
-      const [ appeal ] = body.items;
-      if (!appeal) {
+      const { body } = request as { body: Array<Appeal> };
+      if (body.length === 0) {
         await response.status(400).send("No appeal data provided.");
         return;
       }
-      // It's valid, so send an ok response immediately
-      await response.status(200).send("OK~!");
-      logHandler.log(
-        "info",
-        `New appeal received from ${appeal.Username} (${appeal["User ID"]})`,
-      );
+      await Promise.all(
+        body.map(async(appeal) => {
+          // It's valid, so send an ok response immediately
+          await response.status(200).send("OK~!");
+          logHandler.log(
+            "info",
+            `New appeal received from ${appeal.Username} (${appeal.Discord_ID})`,
+          );
 
-      await fetch(
-        "https://discord.com/api/v10/channels/987408145863307334/messages",
-        {
-          body: JSON.stringify({
-            components: [
-              {
-                content: "# NEW BAN APPEAL",
-                type:    10,
-              },
-              {
-                // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
-                accent_color: null,
-                components:   [
+          await fetch(
+            "https://discord.com/api/v10/channels/987408145863307334/messages",
+            {
+              body: JSON.stringify({
+                components: [
                   {
-                    content: "**User Name and ID**",
+                    content: "# NEW BAN APPEAL",
                     type:    10,
                   },
                   {
-                    content: `${appeal.Username} (${appeal["User ID"]})`,
-                    type:    10,
+                    // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
+                    accent_color: null,
+                    components:   [
+                      {
+                        content: "**User Name and ID**",
+                        type:    10,
+                      },
+                      {
+                        content: `${appeal.Username} (${appeal.Discord_ID})`,
+                        type:    10,
+                      },
+                    ],
+                    spoiler: false,
+                    type:    17,
+                  },
+                  {
+                    // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
+                    accent_color: null,
+                    components:   [
+                      {
+                        content:
+                          "**I have read and will follow Code of Conduct**",
+                        type: 10,
+                      },
+                      {
+                        content: String(appeal.Code_of_Conduct),
+                        type:    10,
+                      },
+                    ],
+                    spoiler: false,
+                    type:    17,
+                  },
+                  {
+                    // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
+                    accent_color: null,
+                    components:   [
+                      {
+                        content: "**Why were you banned?**",
+                        type:    10,
+                      },
+                      {
+                        content: appeal.Reason,
+                        type:    10,
+                      },
+                    ],
+                    spoiler: false,
+                    type:    17,
+                  },
+                  {
+                    // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
+                    accent_color: null,
+                    components:   [
+                      {
+                        content: "**Was the ban fair? Why or why not?**",
+                        type:    10,
+                      },
+                      {
+                        content: appeal.Fairness,
+                        type:    10,
+                      },
+                    ],
+                    spoiler: false,
+                    type:    17,
+                  },
+                  {
+                    // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
+                    accent_color: null,
+                    components:   [
+                      {
+                        content: "**How will your behaviour improve?**",
+                        type:    10,
+                      },
+                      {
+                        content: appeal.Improvement,
+                        type:    10,
+                      },
+                    ],
+                    spoiler: false,
+                    type:    17,
                   },
                 ],
-                spoiler: false,
-                type:    17,
-              },
-              {
+                flags: 32_768,
+              }),
+              headers: {
                 // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
-                accent_color: null,
-                components:   [
-                  {
-                    content: "**I have read and will follow Code of Conduct**",
-                    type:    10,
-                  },
-                  {
-                    content: String(appeal["Code of Conduct"]),
-                    type:    10,
-                  },
-                ],
-                spoiler: false,
-                type:    17,
-              },
-              {
+                "Authorization": `Bot ${process.env.TOKEN ?? ""}`,
                 // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
-                accent_color: null,
-                components:   [
-                  {
-                    content: "**Why were you banned?**",
-                    type:    10,
-                  },
-                  {
-                    content: appeal.Reason,
-                    type:    10,
-                  },
-                ],
-                spoiler: false,
-                type:    17,
+                "Content-Type":  "application/json",
               },
-              {
-                // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
-                accent_color: null,
-                components:   [
-                  {
-                    content: "**Was the ban fair? Why or why not?**",
-                    type:    10,
-                  },
-                  {
-                    content: appeal.Fair,
-                    type:    10,
-                  },
-                ],
-                spoiler: false,
-                type:    17,
+              method: "POST",
+            },
+          ).
+            // eslint-disable-next-line max-nested-callbacks -- Necessary to handle the nested callback.
+            then((responseInner) => {
+              if (!responseInner.ok) {
+                throw new Error(
+                  `Failed to send appeal message: ${responseInner.statusText}`,
+                );
+              }
+            }).
+            catch(
+              // eslint-disable-next-line max-nested-callbacks -- Necessary to handle the nested callback.
+              (error: unknown) => {
+                logHandler.error(JSON.stringify(error));
+                return void errorHandler(
+                  camperChan,
+                  "send appeal message",
+                  error,
+                );
               },
-              {
-                // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
-                accent_color: null,
-                components:   [
-                  {
-                    content: "**How will your behaviour improve?**",
-                    type:    10,
-                  },
-                  {
-                    content: appeal.Improve,
-                    type:    10,
-                  },
-                ],
-                spoiler: false,
-                type:    17,
-              },
-            ],
-            flags: 32_768,
-          }),
-          headers: {
-            // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
-            "Authorization": `Bot ${process.env.TOKEN ?? ""}`,
-            // eslint-disable-next-line @typescript-eslint/naming-convention -- Discord API name.
-            "Content-Type":  "application/json",
-          },
-          method: "POST",
-        },
-      ).
-        then((responseInner) => {
-          if (!responseInner.ok) {
-            throw new Error(
-              `Failed to send appeal message: ${responseInner.statusText}`,
             );
-          }
-        }).
-        catch(
-          (error: unknown) => {
-            logHandler.error(JSON.stringify(error));
-            return void errorHandler(camperChan, "send appeal message", error);
-          },
-        );
+        }),
+      );
     });
 
     server.listen({ port: 1443 }, (error) => {
