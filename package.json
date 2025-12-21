@@ -45,7 +45,7 @@
     "@nhcarrigan/eslint-config": "5.2.0",
     "@nhcarrigan/typescript-config": "4.0.0",
     "@types/diff": "6.0.0",
-    "@types/node": "22.19.1",
+    "@types/node": "22.19.3",
     "@types/node-schedule": "2.1.8",
     "@types/string-similarity": "4.0.2",
     "@vitest/coverage-istanbul": "2.1.9",
