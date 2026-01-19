@@ -31,15 +31,19 @@ export const handleMessageCreate = async(
     return;
   }
   if (message.author.id === "465650873650118659") {
-    if (message.content.startsWith("~cachebust")) {
-      const [ , id ] = message.content.split(/\s+/g);
+     if (message.content.startsWith("~cachebust")) {
+      const [, id] = message.content.split(/\s+/g);
       if (id !== undefined) {
-        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete -- Dynamic delete is required here.
         delete camperChan.learnAccounts[id];
       }
       await message.reply(`Cache cleared for ${String(id)}`);
     }
-    if (message.content === "~contributors") {
+    else if (message.content === "~roles") {
+      await message.reply("Loading language roles.");
+      await loadRoles(camperChan);
+      await message.reply("Done~!"); 
+
+    } else if (message.content === "~contributors") {
       await message.reply("Fetching records.");
       const allRecords = await camperChan.db.messages.findMany({});
       const above1000 = allRecords.
