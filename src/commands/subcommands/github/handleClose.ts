@@ -58,7 +58,7 @@ export const handleClose: Subcommand = {
         owner:        "freeCodeCamp",
         repo:         repo,
         state:        "closed",
-        // eslint-disable-next-line @typescript-eslint/naming-convention, camelcase -- Github API name.
+        // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
         state_reason: isPull
           ? undefined
           : "not_planned",

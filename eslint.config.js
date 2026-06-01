@@ -22,7 +22,7 @@ export default [
   {
     files: ["src/commands/subcommands/github/*.ts"],
     rules: {
-      camelcase: ["error", { allow: ["issue_number"] }]
+      camelcase: ["error", { allow: ["issue_number", "state_reason"] }]
     }
   },
   {
