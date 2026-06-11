@@ -58,10 +58,12 @@ export const handleClose: Subcommand = {
         owner:        "freeCodeCamp",
         repo:         repo,
         state:        "closed",
-        // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
-        state_reason: isPull
-          ? undefined
-          : "not_planned",
+        ...isPull
+          ? {}
+          : {
+            // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
+            state_reason: "not_planned" as const,
+          },
       });
       if (isPull && isSpam) {
         await camperChan.octokit.rest.issues.addLabels({
