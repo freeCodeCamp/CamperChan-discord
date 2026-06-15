@@ -31,7 +31,7 @@ describe("github command", () => {
       close?.description,
       "Close an issue or pull request under the freeCodeCamp organisation.",
     );
-    assert.lengthOf(close?.options || "hi", 4);
+    assert.lengthOf(close?.options || "hi", 6);
     assert.strictEqual(close?.options?.[0].name, "repository");
     assert.strictEqual(
       close?.options?.[0].description,
@@ -71,6 +71,26 @@ describe("github command", () => {
     assert.strictEqual(
       close?.options?.[3].type,
       ApplicationCommandOptionType.Boolean,
+    );
+    assert.strictEqual(close?.options?.[4].name, "reason");
+    assert.strictEqual(
+      close?.options?.[4].description,
+      `Why the issue is being closed. Defaults to not planned. Ignored for pull requests.`,
+    );
+    assert.isFalse(close?.options?.[4].required);
+    assert.strictEqual(
+      close?.options?.[4].type,
+      ApplicationCommandOptionType.String,
+    );
+    assert.strictEqual(close?.options?.[5].name, "duplicate-of");
+    assert.strictEqual(
+      close?.options?.[5].description,
+      `The number of the issue or pull this is a duplicate of. Used when reason is duplicate.`,
+    );
+    assert.isFalse(close?.options?.[5].required);
+    assert.strictEqual(
+      close?.options?.[5].type,
+      ApplicationCommandOptionType.Integer,
     );
   });
 
