@@ -62,7 +62,7 @@ export const handleClose: Subcommand = {
           ? {}
           : {
             // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
-            state_reason: "not_planned" as const,
+            state_reason: "not_planned",
           },
       });
       if (isPull && isSpam) {
