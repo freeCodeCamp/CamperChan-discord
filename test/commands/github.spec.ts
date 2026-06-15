@@ -75,7 +75,7 @@ describe("github command", () => {
     assert.strictEqual(close?.options?.[4].name, "reason");
     assert.strictEqual(
       close?.options?.[4].description,
-      `Why the issue is being closed. Defaults to not planned. Ignored for pull requests.`,
+      `Why the issue is being closed. Defaults to not planned. Not valid for pull requests.`,
     );
     assert.isFalse(close?.options?.[4].required);
     assert.strictEqual(

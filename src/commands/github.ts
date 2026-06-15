@@ -65,7 +65,7 @@ export const github: Command = {
           return option.
             setName("reason").
             setDescription(
-              `Why the issue is being closed. Defaults to not planned. Ignored for pull requests.`,
+              `Why the issue is being closed. Defaults to not planned. Not valid for pull requests.`,
             ).
             addChoices(
               { name: "completed", value: "completed" },
