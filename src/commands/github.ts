@@ -60,6 +60,25 @@ export const github: Command = {
           return option.
             setName("spam").
             setDescription("Label the PR as spam for Hacktoberfest?");
+        }).
+        addStringOption((option) => {
+          return option.
+            setName("reason").
+            setDescription(
+              `Why the issue is being closed. Defaults to not planned. Not valid for pull requests.`,
+            ).
+            addChoices(
+              { name: "completed", value: "completed" },
+              { name: "not planned", value: "not_planned" },
+              { name: "duplicate", value: "duplicate" },
+            );
+        }).
+        addIntegerOption((option) => {
+          return option.
+            setName("duplicate-of").
+            setDescription(
+              `The number of the issue or pull this is a duplicate of. Used when reason is duplicate.`,
+            );
         }),
     ).
     addSubcommand(

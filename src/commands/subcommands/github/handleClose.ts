@@ -26,6 +26,10 @@ export const handleClose: Subcommand = {
       const number = interaction.options.getInteger("number", true);
       const comment = interaction.options.getString("comment") ?? null;
       const isSpam = interaction.options.getBoolean("spam") ?? false;
+      const reasonInput = interaction.options.getString("reason");
+      const reason = reasonInput ?? "not_planned";
+      const duplicateOf
+        = interaction.options.getInteger("duplicate-of") ?? null;
 
       const data = await camperChan.octokit.rest.issues.get({
         // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
@@ -45,6 +49,42 @@ export const handleClose: Subcommand = {
         return;
       }
       const isPull = Boolean(data.data.pull_request);
+
+      if (isPull && (reasonInput !== null || duplicateOf !== null)) {
+        await interaction.editReply({
+          content:
+            `The \`reason\` and \`duplicate-of\` options only apply to issues, not pull requests.`,
+        });
+        return;
+      }
+
+      const isDuplicate = !isPull && reason === "duplicate";
+
+      let duplicateNodeId: string | null = null;
+      if (isDuplicate) {
+        if (duplicateOf === null) {
+          await interaction.editReply({
+            content:
+              `Please provide the \`duplicate-of\` number when closing an issue as a duplicate.`,
+          });
+          return;
+        }
+        const duplicate = await camperChan.octokit.rest.issues.get({
+          // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
+          issue_number: duplicateOf,
+          owner:        "freeCodeCamp",
+          repo:         repo,
+        });
+        if (duplicate.data.pull_request) {
+          await interaction.editReply({
+            content:
+              `The \`duplicate-of\` number must be an issue, but [#${String(duplicateOf)}](<${duplicate.data.html_url}>) is a pull request.`,
+          });
+          return;
+        }
+        duplicateNodeId = duplicate.data.node_id;
+      }
+
       await camperChan.octokit.rest.issues.createComment({
         body:         commentBody(isPull, comment),
         // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
@@ -52,13 +92,40 @@ export const handleClose: Subcommand = {
         owner:        "freeCodeCamp",
         repo:         repo,
       });
-      await camperChan.octokit.rest.issues.update({
-        // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
-        issue_number: number,
-        owner:        "freeCodeCamp",
-        repo:         repo,
-        state:        "closed",
-      });
+
+      if (duplicateNodeId === null) {
+        await camperChan.octokit.rest.issues.update({
+          // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
+          issue_number: number,
+          owner:        "freeCodeCamp",
+          repo:         repo,
+          state:        "closed",
+          ...isPull
+            ? {}
+            : {
+              // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
+              state_reason: reason === "completed"
+                ? "completed"
+                : "not_planned",
+            },
+        });
+      } else {
+        await camperChan.octokit.graphql(
+          `mutation($issueId: ID!, $duplicateIssueId: ID!) {
+            closeIssue(input: {
+              issueId: $issueId,
+              stateReason: DUPLICATE,
+              duplicateIssueId: $duplicateIssueId
+            }) {
+              issue { id }
+            }
+          }`,
+          {
+            duplicateIssueId: duplicateNodeId,
+            issueId:          data.data.node_id,
+          },
+        );
+      }
       if (isPull && isSpam) {
         await camperChan.octokit.rest.issues.addLabels({
           // eslint-disable-next-line @typescript-eslint/naming-convention -- Github API name.
