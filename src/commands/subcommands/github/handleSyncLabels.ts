@@ -1,4 +1,5 @@
 import { PermissionFlagsBits } from "discord.js";
+import { sprintReviewerRoleId } from "../../../config/roles.js";
 import { errorHandler } from "../../../utils/errorHandler.js";
 import type { Subcommand } from "../../../interfaces/subcommand.js";
 
@@ -44,6 +45,7 @@ export const handleSyncLabels: Subcommand = {
       PermissionFlagsBits.BanMembers,
     ].some((p) => {
       return member.permissions.has(p);
-    });
+      // Explicit override so the sprint reviewers can manage labels without needing perms.
+    }) || member.roles.cache.has(sprintReviewerRoleId);
   },
 };
