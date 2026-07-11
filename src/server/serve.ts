@@ -191,6 +191,12 @@ export const instantiateServer = async(
                         content: `${appeal.Username} (${appeal.Discord_ID})`,
                         type:    10,
                       },
+                      {
+                        custom_id: "copy_id",
+                        label:     "Copy id!",
+                        style:     1,
+                        type:      2,
+                      },
                     ],
                     spoiler: false,
                     type:    17,
