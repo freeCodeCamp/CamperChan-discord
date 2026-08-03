@@ -13,8 +13,16 @@ export const handleMessageDelete = async(
   message: Message | PartialMessage,
 ): Promise<void> => {
   try {
-    const { author, channel, content, guild, embeds, attachments, stickers }
-      = message;
+    const {
+      author,
+      channel,
+      content,
+      guild,
+      embeds,
+      attachments,
+      stickers,
+      createdAt,
+    } = message;
 
     if (!guild) {
       return;
@@ -39,13 +47,19 @@ export const handleMessageDelete = async(
       },
     );
 
+    /*
+     * The log message carries its own timestamp, so this preserves when the
+     * deleted message was sent instead.
+     */
+    deleteEmbed.setTimestamp(createdAt);
+
     if (author) {
       deleteEmbed.setAuthor({
         iconURL: author.displayAvatarURL(),
         name:    author.tag,
       });
       deleteEmbed.setFooter({
-        text: `ID: ${author.id}`,
+        text: `ID: ${author.id} | Message sent`,
       });
     }
 
