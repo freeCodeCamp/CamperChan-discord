@@ -89,16 +89,35 @@ export const handleMessageCreate = async(
   const inviteWithPing
     = MessageMentions.EveryonePattern.test(message.content)
     && await hasNonApprovedInvite(camperChan, message.content);
-  const isCompromised
-    = await hasKnownPhishingLink(camperChan, message.content)
-    || inviteWithPing
-    // This channel is the "honeypot" channel. Regular members should never post in here.
-    || message.channel.id === "1286391728919810150";
+  const hasPhishingLink
+    = await hasKnownPhishingLink(camperChan, message.content);
+  // This channel is the "honeypot" channel. Regular members should never post in here.
+  const isHoneypotPost = message.channel.id === "1286391728919810150";
+  const triggers = [
+    hasPhishingLink && "Known phishing link",
+    inviteWithPing && "Unapproved invite with a mass ping",
+    isHoneypotPost && "Posted in the honeypot channel",
+  ].filter((trigger): trigger is string => {
+    return typeof trigger === "string";
+  });
+  const isCompromised = triggers.length > 0;
 
   const isBannable = Boolean(message.member?.bannable);
 
   if (isCompromised && isBannable) {
     const reason = "Your account appears to be compromised.";
+    // Recorded before the ban, as banning prunes the message itself.
+    const stickerNames = message.stickers.map((sticker) => {
+      return sticker.name;
+    }).join(" ");
+    const messageText
+      = message.content === ""
+        ? "no content"
+        : message.content;
+    const loggedContent = customSubstring(
+      [ messageText, stickerNames ].filter(Boolean).join(" "),
+      1000,
+    );
     const sentNotice = await sendModerationDm(
       camperChan,
       {
@@ -125,10 +144,32 @@ export const handleMessageCreate = async(
         value: customSubstring(reason, 1000),
       },
       {
+        name:  "Trigger",
+        value: triggers.join("\n"),
+      },
+      {
+        inline: true,
+        name:   "Channel",
+        value:  `<#${message.channel.id}>`,
+      },
+      {
+        inline: true,
+        name:   "Message",
+        value:  message.url,
+      },
+      {
+        name:  "Content",
+        value: loggedContent,
+      },
+      {
         name:  "User notified?",
         value: String(sentNotice),
       },
     ]);
+    const attached = message.attachments.first();
+    if (attached) {
+      banLogEmbed.setImage(attached.proxyURL);
+    }
     banLogEmbed.setTimestamp();
     banLogEmbed.setAuthor({
       iconURL: message.author.displayAvatarURL(),
@@ -139,6 +180,12 @@ export const handleMessageCreate = async(
     });
 
     await camperChan.config.modHook.send({ embeds: [ banLogEmbed ] });
+
+    if (message.embeds.length > 0) {
+      await Promise.all(message.embeds.map(async(embed) => {
+        return await camperChan.config.modHook.send({ embeds: [ embed ] });
+      }));
+    }
   }
 
   await messageCounter(camperChan, message);
