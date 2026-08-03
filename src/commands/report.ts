@@ -53,7 +53,7 @@ export const report: Command = {
       }
 
       await reportChannel.send({
-        content: `<@{interaction.user.id}> has reported <@${target.id}> for the following behaviour in <#${voice.id}>:\n${reason}`,
+        content: `<@${interaction.user.id}> has reported <@${target.id}> for the following behaviour in <#${voice.id}>:\n${reason}`,
       });
       await interaction.editReply({
         content:
