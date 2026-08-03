@@ -170,13 +170,18 @@ export const handleMessageCreate = async(
     if (attached) {
       banLogEmbed.setImage(attached.proxyURL);
     }
-    banLogEmbed.setTimestamp();
+
+    /*
+     * The log message carries its own timestamp, so this preserves when the
+     * offending message was sent instead.
+     */
+    banLogEmbed.setTimestamp(message.createdAt);
     banLogEmbed.setAuthor({
       iconURL: message.author.displayAvatarURL(),
       name:    message.author.tag,
     });
     banLogEmbed.setFooter({
-      text: `ID: ${message.author.id}`,
+      text: `ID: ${message.author.id} | Message sent`,
     });
 
     await camperChan.config.modHook.send({ embeds: [ banLogEmbed ] });
