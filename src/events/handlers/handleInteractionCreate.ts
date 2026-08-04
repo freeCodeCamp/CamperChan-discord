@@ -55,6 +55,27 @@ export const handleInteractionCreate = async(
     return;
   }
 
+  /*
+   * Autocomplete interactions can only be answered with a list of choices.
+   * Every path here must call respond, or the camper's client hangs until
+   * Discord times the interaction out.
+   */
+  if (interaction.isAutocomplete()) {
+    if (!interaction.inCachedGuild()) {
+      await interaction.respond([]);
+      return;
+    }
+    const target = camperChan.commands.find((command) => {
+      return command.data.name === interaction.commandName;
+    });
+    if (!target?.autocomplete) {
+      await interaction.respond([]);
+      return;
+    }
+    await target.autocomplete(camperChan, interaction);
+    return;
+  }
+
   if (interaction.isButton()) {
     if (interaction.customId === "ticket-open") {
       if (!interaction.inCachedGuild()) {

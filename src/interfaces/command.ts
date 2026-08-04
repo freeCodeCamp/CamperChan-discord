@@ -1,5 +1,6 @@
 import type { ExtendedClient } from "./extendedClient.js";
 import type {
+  AutocompleteInteraction,
   ChatInputCommandInteraction,
   SlashCommandOptionsOnlyBuilder,
   SlashCommandSubcommandsOnlyBuilder,
@@ -10,5 +11,9 @@ export interface Command {
   run: (
     camperChan: ExtendedClient,
     interaction: ChatInputCommandInteraction<"cached">
+  )=> Promise<void>;
+  autocomplete?: (
+    camperChan: ExtendedClient,
+    interaction: AutocompleteInteraction<"cached">
   )=> Promise<void>;
 }
