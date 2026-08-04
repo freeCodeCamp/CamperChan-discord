@@ -5,19 +5,39 @@ import {
   SlashCommandSubcommandBuilder,
 } from "discord.js";
 import { errorHandler } from "../utils/errorHandler.js";
+import { handleAssignRole } from "./subcommands/management/handleAssignRole.js";
 import { handlePrivate } from "./subcommands/management/handlePrivate.js";
 import { handleRole } from "./subcommands/management/handleRole.js";
 import { handleTickets } from "./subcommands/management/handleTickets.js";
 import type { Command } from "../interfaces/command.js";
 import type { Subcommand } from "../interfaces/subcommand.js";
 
+/* eslint-disable @typescript-eslint/naming-convention -- These keys are subcommand names, which Discord requires to be kebab-case. */
 const handlers: Record<string, Subcommand> = {
-  private: handlePrivate,
-  role:    handleRole,
-  tickets: handleTickets,
+  "assign-role": handleAssignRole,
+  "private":     handlePrivate,
+  "role":        handleRole,
+  "tickets":     handleTickets,
 };
+/* eslint-enable @typescript-eslint/naming-convention -- Re-enabled after the subcommand map. */
 
 export const management: Command = {
+  autocomplete: async(camperChan, interaction) => {
+    try {
+      const handler = handlers[interaction.options.getSubcommand(true)];
+      if (!handler?.autocomplete
+        || !handler.permissionValidator(interaction.member)) {
+        await interaction.respond([]);
+        return;
+      }
+      await handler.autocomplete(camperChan, interaction);
+    } catch (error) {
+      await errorHandler(camperChan, "management autocomplete", error);
+      await interaction.respond([]).catch(() => {
+        return null;
+      });
+    }
+  },
   data: new SlashCommandBuilder().
     setName("management").
     setDescription("Commands related to server management.").
@@ -72,6 +92,24 @@ export const management: Command = {
         addRoleOption((option) => {
           return option.setName("role5").
             setDescription("Role to create a button for.");
+        }),
+    ).
+    addSubcommand(
+      new SlashCommandSubcommandBuilder().
+        setName("assign-role").
+        setDescription("Adds or removes a role for a user on their behalf.").
+        addUserOption((option) => {
+          return option.
+            setName("target").
+            setDescription("The user to update the roles of.").
+            setRequired(true);
+        }).
+        addStringOption((option) => {
+          return option.
+            setName("role").
+            setDescription("The role to add to, or remove from, the user.").
+            setRequired(true).
+            setAutocomplete(true);
         }),
     ).
     addSubcommand(

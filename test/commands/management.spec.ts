@@ -18,7 +18,41 @@ describe("management command", () => {
       management.data.description,
       "Commands related to server management.",
     );
-    assert.lengthOf(subcommands, 3);
+    assert.lengthOf(subcommands, 4);
+  });
+
+  it("has correct assign-role", () => {
+    const assignRole = subcommands.find((sub) => {
+      return sub.name === "assign-role";
+    });
+    assert.strictEqual(
+      assignRole?.description,
+      "Adds or removes a role for a user on their behalf.",
+    );
+    assert.lengthOf(assignRole?.options || "hi", 2);
+    assert.strictEqual(assignRole?.options[0].name, "target");
+    assert.strictEqual(
+      assignRole?.options[0].description,
+      "The user to update the roles of.",
+    );
+    assert.isTrue(assignRole?.options[0].required);
+    assert.strictEqual(
+      assignRole?.options[0].type,
+      ApplicationCommandOptionType.User,
+    );
+    assert.strictEqual(assignRole?.options[1].name, "role");
+    assert.strictEqual(
+      assignRole?.options[1].description,
+      "The role to add to, or remove from, the user.",
+    );
+    assert.isTrue(assignRole?.options[1].required);
+    assert.strictEqual(
+      assignRole?.options[1].type,
+      ApplicationCommandOptionType.String,
+    );
+    assert.isTrue(
+      (assignRole?.options[1] as { autocomplete?: boolean }).autocomplete,
+    );
   });
 
   it("has correct private", () => {
