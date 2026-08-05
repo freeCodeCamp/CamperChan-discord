@@ -13,8 +13,16 @@ export const handleMessageDelete = async(
   message: Message | PartialMessage,
 ): Promise<void> => {
   try {
-    const { author, channel, content, guild, embeds, attachments, stickers }
-      = message;
+    const {
+      author,
+      channel,
+      content,
+      guild,
+      embeds,
+      attachments,
+      stickers,
+      createdTimestamp,
+    } = message;
 
     if (!guild) {
       return;
@@ -27,6 +35,10 @@ export const handleMessageDelete = async(
       {
         name:  "Channel",
         value: `<#${channel.id}>`,
+      },
+      {
+        name:  "Sent",
+        value: `<t:${String(Math.floor(createdTimestamp / 1000))}:f>`,
       },
       {
         name:  "Content",
