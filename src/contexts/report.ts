@@ -31,7 +31,8 @@ export const report: Context = {
 
       const { reportChannel } = camperChan;
 
-      const { author, url, content, channel } = message;
+      const { author, url, content, channel, attachments, stickers, embeds }
+        = message;
 
       const linkButton = new ButtonBuilder().
         setStyle(ButtonStyle.Link).
@@ -47,9 +48,43 @@ export const report: Context = {
         acknowledgeButton,
       ]);
 
+      /*
+       * A message may have no text at all, but the embed description cannot
+       * be an empty string. Summarise the non-text payload instead.
+       */
+      const descriptionParts = [ content ];
+      if (stickers.size > 0) {
+        descriptionParts.push(`**Stickers:** ${stickers.map((sticker) => {
+          return sticker.name;
+        }).join(", ")}`);
+      }
+      if (attachments.size > 0) {
+        descriptionParts.push(`**Attachments:** ${attachments.
+          map((attachment) => {
+            return attachment.proxyURL;
+          }).join("\n")}`);
+      }
+      if (embeds.length > 0) {
+        descriptionParts.push(`**Embeds:** ${String(embeds.length)}`);
+      }
+      const description = descriptionParts.
+        filter(Boolean).
+        join("\n\n").
+        slice(0, 4000);
+
       const reportEmbed = new EmbedBuilder();
       reportEmbed.setTitle("A message was flagged for review!");
-      reportEmbed.setDescription(content.slice(0, 4000));
+      reportEmbed.setDescription(
+        description === ""
+          ? "*This message has no text. Use the message link to view it.*"
+          : description,
+      );
+      const image = attachments.find((attachment) => {
+        return attachment.contentType?.startsWith("image/") ?? false;
+      });
+      if (image) {
+        reportEmbed.setImage(image.proxyURL);
+      }
       reportEmbed.setAuthor({
         iconURL: author.displayAvatarURL(),
         name:    author.tag,
