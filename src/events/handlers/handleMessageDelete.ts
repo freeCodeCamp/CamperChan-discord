@@ -21,7 +21,7 @@ export const handleMessageDelete = async(
       embeds,
       attachments,
       stickers,
-      createdAt,
+      createdTimestamp,
     } = message;
 
     if (!guild) {
@@ -37,6 +37,10 @@ export const handleMessageDelete = async(
         value: `<#${channel.id}>`,
       },
       {
+        name:  "Sent",
+        value: `<t:${String(Math.floor(createdTimestamp / 1000))}:f>`,
+      },
+      {
         name:  "Content",
         value: customSubstring(
           (content ?? "no content") + stickers.map((element) => {
@@ -47,19 +51,13 @@ export const handleMessageDelete = async(
       },
     );
 
-    /*
-     * The log message carries its own timestamp, so this preserves when the
-     * deleted message was sent instead.
-     */
-    deleteEmbed.setTimestamp(createdAt);
-
     if (author) {
       deleteEmbed.setAuthor({
         iconURL: author.displayAvatarURL(),
         name:    author.tag,
       });
       deleteEmbed.setFooter({
-        text: `ID: ${author.id} | Message sent`,
+        text: `ID: ${author.id}`,
       });
     }
 
