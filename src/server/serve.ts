@@ -184,11 +184,19 @@ export const instantiateServer = async(
                     accent_color: null,
                     components:   [
                       {
-                        content: "**User Name and ID**",
+                        content: "**User Name**",
                         type:    10,
                       },
                       {
-                        content: `${appeal.Username} (\`\`\`${appeal.Discord_ID}\`\`\`)`,
+                        content: appeal.Username,
+                        type:    10,
+                      },
+                      {
+                        content: "**ID**",
+                        type:    10,
+                      },
+                      {
+                        content: `(\`\`\`\n${appeal.Discord_ID}\n\`\`\`)`,
                         type:    10,
                       },
                     ],
