@@ -196,7 +196,7 @@ export const instantiateServer = async(
                         type:    10,
                       },
                       {
-                        content: `(\`\`\`\n${appeal.Discord_ID}\n\`\`\`)`,
+                        content: `\`\`\`\n${appeal.Discord_ID}\n\`\`\``,
                         type:    10,
                       },
                     ],
