@@ -40,7 +40,7 @@ export const handleMute: Subcommand = {
 
       if (durationMilliseconds > 2_419_200_000) {
         await interaction.editReply({
-          content: "You cannot mute someone for longer than a month.",
+          content: "You cannot mute someone for longer than 28 days.",
         });
         return;
       }

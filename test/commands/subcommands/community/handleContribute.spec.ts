@@ -58,7 +58,7 @@ describe("contribute Handler", () => {
     assert.equal(second.name, "Moderator Handbook");
     assert.equal(
       second.value,
-      "https://contribute.freecodecamp.org/#/flight-manuals/moderator-handbook",
+      "https://contribute.freecodecamp.org/moderator-handbook/",
     );
     assert.equal(third.name, "Contributing Guidelines");
     assert.equal(third.value, "https://contribute.freecodecamp.org/");
@@ -70,7 +70,7 @@ describe("contribute Handler", () => {
     assert.equal(fifth.name, "Pull Request Reviews");
     assert.equal(
       fifth.value,
-      `[PRs Ready for Review](https://github.com/freeCodeCamp/freeCodeCamp/pulls?q=is%3Aopen+is%3Apr+-label%3A%22status%3A+blocked%22+-label%3A%22status%3A+merge+conflict%22+status%3Asuccess+draft%3Afalse)`,
+      `[PRs Ready for Review](https://github.com/freeCodeCamp/freeCodeCamp/pulls?q=is%3Aopen+is%3Apr+-label%3A%22status%3A+blocked%22+-label%3A%22MERGE+CONFLICT%21%22+status%3Asuccess+draft%3Afalse)`,
     );
   });
 });
