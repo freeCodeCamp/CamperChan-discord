@@ -24,7 +24,7 @@ export const send100DaysOfCode
 Heya <@&1189043630489473074> friends! This is your daily reminder to post your progress update.
 
 - Tell us what you did today! Did you write code? Read documentation? Something else?
-- Are you stuck on something? Ask in https://canary.discord.com/channels/692816967895220344/718214639669870683, and we'll be happy to help!
+- Are you stuck on something? Ask in <#718214639669870683> for help with the freeCodeCamp curriculum or <#1535346359711039498> for general programming questions.
 - Want to chat with your fellow developers? Head over to https://canary.discord.com/channels/692816967895220344/693145545878929499!
 - Make sure to encourage and support your fellow https://canary.discord.com/channels/692816967895220344/697124514982527086 participants!
 

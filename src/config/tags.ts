@@ -19,7 +19,7 @@ export const tags: Array<Tag> = [
   },
   {
     message:
-      "Don't ask to ask, just ask\n<https://dontasktoask.com>. For details on how to ask a strong question, visit <#1410670814696833084>",
+      "Don't ask to ask, just ask\n<https://dontasktoask.com>. For details on how to ask a strong question, read [How to Ask a Great Technical Question](https://www.freecodecamp.org/news/how-to-ask-a-great-technical-question/).",
     name: "How to ask a question",
   },
   {
@@ -58,7 +58,7 @@ __***Underline Bold Italic***__ - \`__***Underline Bold Italic***__\`
   },
   {
     message:
-      "This channel is specifically for facilitating contributor efforts. For general programming questions, you should ask in <#718214639669870683>.",
+      "This channel is specifically for facilitating contributor efforts. For general programming questions, you should ask in <#1535346359711039498>.",
     name: "Programming questions in contributor channels",
   },
   {

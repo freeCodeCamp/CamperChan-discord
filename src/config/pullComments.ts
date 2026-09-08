@@ -16,17 +16,17 @@ const pullComments: Array<{ key: string; message: string }> = [
   },
   {
     key:     "Duplicate PR",
-    message: `This PR seems to make similar changes as an existing PR. As such, we are going to close this as a duplicate.\n\nIf you feel you have additional changes to expand upon this PR, please feel free to push your commits and request this PR be reopened.\n\nThanks again! 😊\n\n---\n\nIf you have any questions, feel free to ask questions on the ["Contributors" category on our forum](https://forum.freecodecamp.org/c/contributors) or [the contributors chat room](https://discord.gg/PRyKn3Vbay).`,
+    message: `This PR seems to make similar changes as an existing PR. As such, we are going to close this as a duplicate.\n\nIf you feel you have additional changes to expand upon this PR, please feel free to push your commits and request this PR be reopened.\n\nThanks again! 😊\n\n---\n\nIf you have any questions, feel free to ask questions on the ["freeCodeCamp Community" category on our forum](https://forum.freecodecamp.org/c/site-community) or [the contributors chat room](https://discord.gg/PRyKn3Vbay).`,
   },
   {
     key: "External Resource Link",
     message:
-      "Thank you for your pull request.\n\nWe are closing this pull request. Please suggest links and other details to add the challenge's corresponding guide post through [a forum topic](https://forum.freecodecamp.org/new-topic?category=Contributors&title=&body=**What%20is%20your%20hint%20or%20solution%20suggestion%3F**%0A%0A%0A%0A%0A**Challenge%3A**%0A%0A%0A**Link%20to%20the%20challenge%3A**) instead.\n\nIf you think we're wrong in closing this issue, please request for it to be reopened and add further clarification. Thank you and happy coding.",
+      "Thank you for your pull request.\n\nWe are closing this pull request.\n\nIf you think we're wrong in closing this issue, please request for it to be reopened and add further clarification. Thank you and happy coding.",
   },
   {
     key: "Newbie Mistakes",
     message:
-      "Hey there,\n\nThanks for your interest in contributing. We appreciate your efforts, but this PR doesn't follow [our guidelines](https://contribute.freecodecamp.org/how-to-open-a-pull-request).\n\nDo not worry, you should join our [Discord](https://discord.gg/KVUmVXA) server and ask for help in the `#contributors` channel. That will help other contributors guide you to get your PR ready for a review. \n\nHappy Contributing!",
+      "Hey there,\n\nThanks for your interest in contributing. We appreciate your efforts, but this PR doesn't follow [our guidelines](https://contribute.freecodecamp.org/how-to-open-a-pull-request).\n\nDo not worry, you should join our [Discord](https://discord.gg/KVUmVXA) server and ask for help in [#freecodecamp-community](https://discord.com/channels/692816967895220344/715074489422970962). That will help other contributors guide you to get your PR ready for a review. \n\nHappy Contributing!",
   },
   {
     key: "Not Triaged",
@@ -45,12 +45,12 @@ const pullComments: Array<{ key: string; message: string }> = [
   {
     key: "Requests for Assignment",
     message:
-      "We typically do not assign issues. Instead, we accept the first pull request that comprehensively solves the issue.\n\nIssues labelled with `help wanted` or `first timers only` are open for contributions.\n\nPlease make sure you read [our guidelines for contributing](https://contribute.freecodecamp.org/intro/). We prioritize contributors following the instructions in our guide. Join us in [our chat room](https://discord.gg/PRyKn3Vbay) or [the forum](https://forum.freecodecamp.org/c/contributors/3) if you need help contributing - our community will be happy to assist you.",
+      "We typically do not assign issues. Instead, we accept the first pull request that comprehensively solves the issue.\n\nIssues labelled with `help wanted` or `first timers only` are open for contributions.\n\nPlease make sure you read [our guidelines for contributing](https://contribute.freecodecamp.org/intro/). We prioritize contributors following the instructions in our guide. Join us in [our chat room](https://discord.gg/PRyKn3Vbay) or [the forum](https://forum.freecodecamp.org/c/site-community) if you need help contributing - our community will be happy to assist you.",
   },
   {
     key: "rtfm",
     message:
-      "Please stop and read our [contributing guide](https://contribute.freecodecamp.org).\n\nThis issue is not marked as ready for contributions or help wanted. Also, we do not assign issues.",
+      "Please stop and read our [contributing guide](https://contribute.freecodecamp.org).\n\nThis issue is not marked as ready for contributions or help wanted. Also, we typically do not assign issues.",
   },
   {
     key: "Failing CI",

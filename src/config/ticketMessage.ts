@@ -1,6 +1,6 @@
 const ticketMessage = `# Ticketing System
 
-This system is designed to allow you to create a private discussion channel with our moderation team. You should only create a ticket to discuss a moderation concern. This system is not to ask for questions about your code - use <#718214639669870683> for that. **Abuse of this system will result in moderation action!**
+This system is designed to allow you to create a private discussion channel with our moderation team. You should only create a ticket to discuss a moderation concern. This system is not to ask for questions about your code - use <#718214639669870683> for curriculum questions or <#1535346359711039498> for general programming questions. **Abuse of this system will result in moderation action!**
 
 ## TL;DR: This system is ONLY for moderation concerns.
 
@@ -10,7 +10,7 @@ This system is designed to allow you to create a private discussion channel with
 - Appeals for (or questions about) a moderation action taken against you.
 
 ### Tickets should NOT be opened for:
-- Help with code you've written. Use <#718214639669870683>.
+- Help with code you've written. Use <#718214639669870683> or <#1535346359711039498>.
 - Reporting a bug in a course. Use [GitHub](<https://github.com/freeCodeCamp/freeCodeCamp/issues>).
 - General questions unrelated to specific moderation concerns. Use <#693145545878929499>
 
