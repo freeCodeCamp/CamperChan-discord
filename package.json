@@ -39,7 +39,7 @@
     "rss-parser": "3.13.0",
     "string-similarity": "4.0.4",
     "strip-ansi": "7.1.2",
-    "winston": "3.18.3"
+    "winston": "3.19.0"
   },
   "devDependencies": {
     "@nhcarrigan/eslint-config": "5.2.0",
