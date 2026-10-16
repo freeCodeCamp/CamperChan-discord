@@ -50,7 +50,7 @@
     "@types/string-similarity": "4.0.2",
     "@vitest/coverage-istanbul": "2.1.9",
     "discordjs-testing": "0.2.0",
-    "eslint": "9.39.1",
+    "eslint": "9.39.5",
     "prisma": "6.19.3",
     "rimraf": "6.1.2",
     "tsx": "4.23.15",
