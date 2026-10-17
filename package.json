@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@prisma/client": "6.19.0",
+    "@prisma/client": "6.19.3",
     "@tryghost/admin-api": "1.14.13",
     "deepl-node": "1.22.0",
     "diff": "7.0.0",
