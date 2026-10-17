@@ -30,8 +30,8 @@ importers:
         specifier: 5.7.3
         version: 5.7.3
       graphql-request:
-        specifier: 7.3.5
-        version: 7.3.5(graphql@16.9.0)
+        specifier: 7.4.0
+        version: 7.4.0(graphql@16.9.0)
       highlight.js:
         specifier: 11.11.1
         version: 11.11.1
@@ -2072,8 +2072,8 @@ packages:
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
 
-  graphql-request@7.3.5:
-    resolution: {integrity: sha512-yrikPPBQFrHTCEw+Nr89vcKkhSOaKk1a4i1aoK0q2pJp0TkkH+HxJXKeVDqzHSYAEoFoNqKmNuqda1tubgaGZQ==}
+  graphql-request@7.4.0:
+    resolution: {integrity: sha512-xfr+zFb/QYbs4l4ty0dltqiXIp07U6sl+tOKAb0t50/EnQek6CVVBLjETXi+FghElytvgaAWtIOt3EV7zLzIAQ==}
     peerDependencies:
       graphql: 14 - 16
 
@@ -5850,7 +5850,7 @@ snapshots:
 
   graphemer@1.4.0: {}
 
-  graphql-request@7.3.5(graphql@16.9.0):
+  graphql-request@7.4.0(graphql@16.9.0):
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.9.0)
       graphql: 16.9.0
