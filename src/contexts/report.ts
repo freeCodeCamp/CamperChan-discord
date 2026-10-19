@@ -4,6 +4,7 @@ import {
   ButtonBuilder,
   ButtonStyle,
   ActionRowBuilder,
+  LabelBuilder,
   TextInputBuilder,
   TextInputStyle,
   ModalBuilder,
@@ -107,17 +108,16 @@ export const report: Context = {
       });
 
       const reason = new TextInputBuilder().
-        setLabel("Why are you reporting this message?").
         setCustomId("reason").
         setStyle(TextInputStyle.Paragraph).
         setRequired(true);
-      const modalRow = new ActionRowBuilder<TextInputBuilder>().addComponents(
-        reason,
-      );
+      const reasonLabel = new LabelBuilder().
+        setLabel("Why are you reporting this message?").
+        setTextInputComponent(reason);
       const modal = new ModalBuilder().
         setCustomId(`report-${log.id}`).
         setTitle("Message Report").
-        addComponents(modalRow);
+        addLabelComponents(reasonLabel);
       await interaction.showModal(modal);
     } catch (error) {
       await errorHandler(camperChan, "report context command", error);
