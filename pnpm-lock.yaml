@@ -42,8 +42,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0(supports-color@7.2.0)
       node-schedule:
-        specifier: 2.1.1
-        version: 2.1.1
+        specifier: 2.1.2
+        version: 2.1.2
       octokit:
         specifier: 4.1.4
         version: 4.1.4
@@ -2720,8 +2720,8 @@ packages:
     resolution: {integrity: sha512-OmO8+GM1JUZqXET720VrJCwkjUCXmCMQm0Z3UDDRbfNLHS4NEAvY60j5jiFv0tkKw2PNNlqOLhahVmwJIOLDIQ==}
     engines: {node: '>=18'}
 
-  node-schedule@2.1.1:
-    resolution: {integrity: sha512-OXdegQq03OmXEjt2hZP33W2YPs/E5BcFQks46+G2gAxs4gHOIVD1u7EqlYLYSKsaIpyKCK9Gbk0ta1/gjRSMRQ==}
+  node-schedule@2.1.2:
+    resolution: {integrity: sha512-JuKopr93W+WP+TaK5yoHJGpzPF9fpkH8Vcc9CXGE993BNeRKsb3L4Wy6FzL0VxkEa6U+8M4Ni0HEm9rMMnwurg==}
     engines: {node: '>=6'}
 
   normalize-package-data@2.5.0:
@@ -6512,7 +6512,7 @@ snapshots:
 
   node-releases@2.0.60: {}
 
-  node-schedule@2.1.1:
+  node-schedule@2.1.2:
     dependencies:
       cron-parser: 4.9.0
       long-timeout: 0.1.1
