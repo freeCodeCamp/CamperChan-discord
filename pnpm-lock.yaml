@@ -21,8 +21,8 @@ importers:
         specifier: 7.0.0
         version: 7.0.0
       discord.js:
-        specifier: 14.27.0
-        version: 14.27.0
+        specifier: 14.28.1
+        version: 14.28.1
       dotenv:
         specifier: 16.6.1
         version: 16.6.1
@@ -86,7 +86,7 @@ importers:
         version: 2.1.9(supports-color@7.2.0)(vitest@2.1.9(@types/node@22.20.5)(supports-color@7.2.0))
       discordjs-testing:
         specifier: 0.2.0
-        version: 0.2.0(discord.js@14.27.0)
+        version: 0.2.0(discord.js@14.28.1)
       eslint:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)(supports-color@7.2.0)
@@ -1704,8 +1704,8 @@ packages:
   discord-api-types@0.38.58:
     resolution: {integrity: sha512-6utghVho47hBzmx8nIp+pKEDDNIlVk6On/J5Y1Q529payNLZjBsrw+mt+G5Y3NYRE3kgta6eBx5hRYVyfHGdOA==}
 
-  discord.js@14.27.0:
-    resolution: {integrity: sha512-qHbFlFG2N7y3LjPySYsL6A1+BnX6bkTVgo842EX0CqVPk/KTMwZkojPHEXKsQUpWZNyz5BISNHK1cPpQw0+m4A==}
+  discord.js@14.28.1:
+    resolution: {integrity: sha512-Je5OcqgurnIUQK4vR+gQnmzOf/lNQsD6d/UkV8ZOj+bFa5zJXPyiGXlbywp2EagwshVT18y7YNQNSRd3FjYkDw==}
     engines: {node: '>=18'}
 
   discordjs-testing@0.2.0:
@@ -5288,7 +5288,7 @@ snapshots:
 
   discord-api-types@0.38.58: {}
 
-  discord.js@14.27.0:
+  discord.js@14.28.1:
     dependencies:
       '@discordjs/builders': 1.15.0
       '@discordjs/collection': 1.5.3
@@ -5307,10 +5307,10 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  discordjs-testing@0.2.0(discord.js@14.27.0):
+  discordjs-testing@0.2.0(discord.js@14.28.1):
     dependencies:
       '@sapphire/snowflake': 3.5.1
-      discord.js: 14.27.0
+      discord.js: 14.28.1
       dotenv: 16.3.1
       winston: 3.10.0
 
