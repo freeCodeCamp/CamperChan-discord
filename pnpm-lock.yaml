@@ -12,8 +12,8 @@ importers:
         specifier: 6.19.3
         version: 6.19.3(prisma@6.19.3(magicast@0.3.5)(typescript@5.9.3))(typescript@5.9.3)
       '@tryghost/admin-api':
-        specifier: 1.14.14
-        version: 1.14.14(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
+        specifier: 1.14.16
+        version: 1.14.16(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
       deepl-node:
         specifier: 1.28.1
         version: 1.28.1(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
@@ -1011,8 +1011,8 @@ packages:
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
 
-  '@tryghost/admin-api@1.14.14':
-    resolution: {integrity: sha512-w1kWh9MCd3ghOIyHkm5yKT6y+c7r/sO/qRTd5Ghpudyc7OnHnRu2xCN7SQwr7R2+Rrt31ix4CJCgsxmuLvx7Vg==}
+  '@tryghost/admin-api@1.14.16':
+    resolution: {integrity: sha512-VUZDJgVEquXrKm3SpXKACUq9DqsOUNN7aZG9F4G6k/2D9bNI8/KSZGaVUXxXMEFbLh4PfeamxgLJ6ozvVyyfPQ==}
 
   '@types/aws-lambda@8.10.164':
     resolution: {integrity: sha512-XOnrazWcOd6yWPnR7DxqCBPPYciDjHq+NN8LPwwqBCJNXLyPJgKo47fZpJ113+oyAn9Zti0Cf6H4k6yPcE3WFg==}
@@ -1350,11 +1350,11 @@ packages:
   avvio@9.3.1:
     resolution: {integrity: sha512-QyTKW61/qlba+cUQBm/sT9X8lri4UdomqSDwCnrnj1IvLVDRRiXRkz4CgBRWB+/cmfC7SK5WQc8T1vSdGvaUcQ==}
 
-  axios@1.20.0:
-    resolution: {integrity: sha512-r8aOh8j9cGKpgQAqpzrUHnSIc6a59Y3Xf/cv8sy1DrHCkZHzQGEuoq1tARk6qSyDdtQGSDgpb9kFlruzPvrgwg==}
-
   axios@1.21.0:
     resolution: {integrity: sha512-YCzXMB53Q9PZBsh7yN7wtapit4WepwcHS2fP8QhGsBxSz5YtgYobV7GGlWlAJi+RxfU77GQTQi2DSLUma42EYA==}
+
+  axios@1.21.1:
+    resolution: {integrity: sha512-6eI5Q/Y4u/Um9dDlsRoq5pY2rxnUTv+L4PpLitnbk/i4jb3MxLZ5CsN5Ih3IysbeRYK4pR+P7qfMsOQl9fwwFQ==}
 
   b4a@1.9.0:
     resolution: {integrity: sha512-dpfcF9fDNR6++cthXR67iyhgqWy9CBouAvIWhIntzBG6cvK/cnIPiZQjBwi/ZqjjBEDGfoNDtmB0kTjroOJ3pQ==}
@@ -4512,9 +4512,9 @@ snapshots:
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
-  '@tryghost/admin-api@1.14.14(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)':
+  '@tryghost/admin-api@1.14.16(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)':
     dependencies:
-      axios: 1.20.0(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
+      axios: 1.21.1(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
       form-data: 4.0.6
       jsonwebtoken: 9.0.3
     transitivePeerDependencies:
@@ -4940,7 +4940,7 @@ snapshots:
       '@fastify/error': 4.2.1
       fastq: 1.20.3
 
-  axios@1.20.0(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0):
+  axios@1.21.0(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
       follow-redirects: 1.16.2(debug@4.4.3(supports-color@7.2.0))
       form-data: 4.0.6
@@ -4950,7 +4950,7 @@ snapshots:
       - debug
       - supports-color
 
-  axios@1.21.0(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0):
+  axios@1.21.1(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
       follow-redirects: 1.16.2(debug@4.4.3(supports-color@7.2.0))
       form-data: 4.0.6
