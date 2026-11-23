@@ -45,7 +45,7 @@ const pullComments: Array<{ key: string; message: string }> = [
   {
     key: "Requests for Assignment",
     message:
-      "We typically do not assign issues. Instead, we accept the first pull request that comprehensively solves the issue.\n\nIssues labelled with `help wanted` or `first timers only` are open for contributions.\n\nPlease make sure you read [our guidelines for contributing](https://contribute.freecodecamp.org/intro/). We prioritize contributors following the instructions in our guide. Join us in [our chat room](https://discord.gg/PRyKn3Vbay) or [the forum](https://forum.freecodecamp.org/c/site-community) if you need help contributing - our community will be happy to assist you.",
+      "We typically do not assign issues. Instead, we accept the first pull request that comprehensively solves the issue.\n\nIssues labelled with `help wanted` or `first timers only` are open for contributions.\n\nPlease make sure you read [our guidelines for contributing](https://contribute.freecodecamp.org/). We prioritize contributors following the instructions in our guide. Join us in [our chat room](https://discord.gg/PRyKn3Vbay) or [the forum](https://forum.freecodecamp.org/c/site-community) if you need help contributing - our community will be happy to assist you.",
   },
   {
     key: "rtfm",
