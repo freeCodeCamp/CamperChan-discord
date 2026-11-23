@@ -14,4 +14,4 @@ Happy Coding!
 
 ## FreeCodeCamp Moderation
 
-This bot is currently serving as a moderation tool for our Discord servers - as such, freeCodeCamp moderators may find themselves here for instructions on using the bot. If this applies to you, documentation for how to utilize the bot's moderation features can be found at the [freeCodeCamp Moderator Handbook](https://contribute.freecodecamp.org/#/moderator-handbook).
+yThis bot is currently serving as a moderation tool for our Discord servers - as such, freeCodeCamp moderators may find themselves here for instructions on using the bot. If this applies to you, documentation for how to utilize the bot's moderation features can be found at the [freeCodeCamp Moderator Handbook](https://contribute.freecodecamp.org/moderator-handbook/).
